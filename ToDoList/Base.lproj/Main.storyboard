@@ -18,18 +18,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New to-do item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HsU-Lh-nTG">
-                                <rect key="frame" x="16" y="285" width="568" height="30"/>
+                                <rect key="frame" x="16" y="217" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4NE-t0-0Ei">
+                                <rect key="frame" x="16" y="340" width="568" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="461019603.07095701">
+                                    <!--2015-08-11 21:00:03 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HsU-Lh-nTG" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3od-NF-uA5"/>
                             <constraint firstItem="HsU-Lh-nTG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Jwb-kA-qxU"/>
+                            <constraint firstAttribute="centerY" secondItem="HsU-Lh-nTG" secondAttribute="centerY" constant="68" id="K8G-OJ-CTu"/>
                             <constraint firstAttribute="centerX" secondItem="HsU-Lh-nTG" secondAttribute="centerX" id="PLx-qf-FuC"/>
                             <constraint firstAttribute="centerY" secondItem="HsU-Lh-nTG" secondAttribute="centerY" id="UKe-Q3-28F"/>
+                            <constraint firstAttribute="centerY" secondItem="4NE-t0-0Ei" secondAttribute="centerY" constant="-121" id="hfY-6f-hxT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4NE-t0-0Ei" secondAttribute="trailing" id="oUK-f8-26r"/>
+                            <constraint firstItem="4NE-t0-0Ei" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pZD-dl-QkG"/>
+                            <constraint firstAttribute="centerX" secondItem="4NE-t0-0Ei" secondAttribute="centerX" id="x4U-a0-IZK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UKe-Q3-28F"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add your next to-do item" id="GbR-9N-x29">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="N0Y-tC-6iO">
@@ -44,6 +60,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="goalDateTime" destination="4NE-t0-0Ei" id="BQM-wL-kpC"/>
                         <outlet property="saveButton" destination="rT8-AN-OKn" id="d82-Xt-BYZ"/>
                         <outlet property="textField" destination="HsU-Lh-nTG" id="psV-zq-PX0"/>
                     </connections>
@@ -94,7 +111,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgA-ec-fWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1159" y="369"/>
+            <point key="canvasLocation" x="1231" y="369"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qfA-0X-oXx">

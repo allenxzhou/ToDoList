@@ -9,6 +9,7 @@
 #import "AddToDoItemViewController.h"
 
 @interface AddToDoItemViewController ()
+@property (weak, nonatomic) IBOutlet UIDatePicker *goalDateTime;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
@@ -19,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSTimeInterval defaultTime = 60 * 60 * 2;
+    NSDate *modifiedDate = [self.goalDateTime.date dateByAddingTimeInterval:defaultTime];
+    [self.goalDateTime setDate:modifiedDate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +43,7 @@
         self.toDoItem = [[ToDoItem alloc] init];
         self.toDoItem.itemName = self.textField.text;
         self.toDoItem.completed = NO;
+        self.toDoItem.goal = self.goalDateTime.date;
     }
 }
 

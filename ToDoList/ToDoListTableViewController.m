@@ -67,7 +67,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = toDoItem.itemName;
+    NSMutableString *itemText = [[NSMutableString alloc] initWithString:toDoItem.itemName];
+    [itemText appendString:@"\t"];
+    [itemText appendString:[self dateConverter:toDoItem.goal]];
+    
+    cell.textLabel.text = itemText;
     if (toDoItem.completed) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -84,6 +88,26 @@
     ToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
     tappedItem.completed = !tappedItem.completed;
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (NSString *)dateConverter:(NSDate *)date {
+    int seconds = date.timeIntervalSinceNow;
+    BOOL wasNegative = false;
+    if (seconds < 0) {
+        seconds *= -1;
+        wasNegative = true;
+    }
+    int days = seconds / 86400;
+    int hours = (seconds - days * 86400) / 3600;
+    int minutes = (seconds - days * 86400 - hours * 3600) / 60;
+    
+    NSString *past = [[NSString alloc] init];
+    if (wasNegative) {
+        past = @" Ago";
+    } else {
+        past = @"";
+    }
+    return [NSString stringWithFormat:@"%d Days, %d Hours, %d Minutes%@", days, hours, minutes, past];
 }
 
 

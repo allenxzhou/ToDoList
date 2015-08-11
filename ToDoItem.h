@@ -12,6 +12,7 @@
 
 @property NSString *itemName;
 @property BOOL completed;
+@property NSDate *goal;
 @property (readonly) NSDate *creationDate;
 
 @end
