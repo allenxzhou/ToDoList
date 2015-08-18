@@ -13,6 +13,7 @@
 @interface ToDoListTableViewController ()
 
 @property NSMutableArray *toDoItems;
+@property NSTimer *updater;
 
 @end
 
@@ -44,6 +45,13 @@
     [self.toDoItems addObject:item1];
     [self.toDoItems addObject:item2];
     [self.toDoItems addObject:item3];
+    
+    // Added so that it will update the time even if you leave the app open - potential overhead though
+    if (self.updater == nil) {
+        self.updater = [NSTimer timerWithTimeInterval:1.0 target:self.tableView selector:@selector(reloadData) userInfo:nil repeats:YES];
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addTimer:self.updater forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,6 +108,7 @@
     int days = seconds / 86400;
     int hours = (seconds - days * 86400) / 3600;
     int minutes = (seconds - days * 86400 - hours * 3600) / 60;
+    seconds %= 60;
     
     NSString *past = [[NSString alloc] init];
     if (wasNegative) {
@@ -107,7 +116,7 @@
     } else {
         past = @"";
     }
-    return [NSString stringWithFormat:@"%d Days, %d Hours, %d Minutes%@", days, hours, minutes, past];
+    return [NSString stringWithFormat:@"%d Days, %d Hours, %d Minutes, %d Seconds%@", days, hours, minutes, seconds, past];
 }
 
 

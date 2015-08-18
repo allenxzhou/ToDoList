@@ -16,6 +16,7 @@
 		9A3112FA1B6AD50D0036D331 /* AddToDoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3112F91B6AD50D0036D331 /* AddToDoItemViewController.m */; };
 		9A3112FD1B6AD5C30036D331 /* ToDoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3112FC1B6AD5C30036D331 /* ToDoListTableViewController.m */; };
 		9A3113001B6AEB340036D331 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3112FF1B6AEB340036D331 /* ToDoItem.m */; };
+		9A9E8EAC1B82F3A6007FFB5A /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E8EAB1B82F3A6007FFB5A /* ToDoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		9A3112FC1B6AD5C30036D331 /* ToDoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListTableViewController.m; sourceTree = "<group>"; };
 		9A3112FE1B6AEB340036D331 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		9A3112FF1B6AEB340036D331 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
+		9A9E8EAB1B82F3A6007FFB5A /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				9A3112FC1B6AD5C30036D331 /* ToDoListTableViewController.m */,
 				9A3112DC1B69AB120036D331 /* Main.storyboard */,
 				9A3112DF1B69AB120036D331 /* Images.xcassets */,
+				9A9E8EAB1B82F3A6007FFB5A /* ToDoCell.xib */,
 				9A3112E11B69AB120036D331 /* LaunchScreen.xib */,
 				9A3112D21B69AB120036D331 /* Supporting Files */,
 			);
@@ -212,6 +215,7 @@
 				9A3112DE1B69AB120036D331 /* Main.storyboard in Resources */,
 				9A3112E31B69AB120036D331 /* LaunchScreen.xib in Resources */,
 				9A3112E01B69AB120036D331 /* Images.xcassets in Resources */,
+				9A9E8EAC1B82F3A6007FFB5A /* ToDoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
