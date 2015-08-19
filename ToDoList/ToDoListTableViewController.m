@@ -8,6 +8,7 @@
 
 #import "ToDoListTableViewController.h"
 #import "ToDoItem.h"
+#import "ToDoCell.h"
 #import "AddToDoItemViewController.h"
 
 @interface ToDoListTableViewController ()
@@ -31,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[self.tableView registerClass: [ToDoCell class] forCellReuseIdentifier:@"ToDoCell"];
     self.toDoItems = [[NSMutableArray alloc] init];
     [self loadInitialData];
 }
@@ -72,14 +74,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
+    ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToDoCell" forIndexPath:indexPath];
+    
+//    if (cell == nil) {
+//        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"ToDoCell" owner:self options:nil];
+//        cell = [nibArray objectAtIndex:0];
+//    }
     
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
-    NSMutableString *itemText = [[NSMutableString alloc] initWithString:toDoItem.itemName];
-    [itemText appendString:@"\t"];
-    [itemText appendString:[self dateConverter:toDoItem.goal]];
+    NSString *itemText = [[NSString alloc] initWithString:toDoItem.itemName];
+    //NSString *timeText = [self dateConverter:toDoItem.goal];
     
-    cell.textLabel.text = itemText;
+    cell.taskLabel.text = itemText;
+    NSLog(@"Fudge Monkeys: %@", cell.taskLabel.text);
+    //cell.detailTextLabel.text = timeText;
     if (toDoItem.completed) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
