@@ -9,18 +9,20 @@
 #import "ToDoCell.h"
 
 @implementation ToDoCell
-@synthesize taskLabel = _taskLabel;
-@synthesize daysLeft = _daysLeft;
-@synthesize hoursLeft = _hoursLeft;
-@synthesize minutesLeft = _minutesLeft;
 
-- (void)awakeFromNib {
-    // Initialization code
-    self.taskLabel = [[UILabel alloc] init];
-    self.daysLeft = [[UILabel alloc] init];
-    self.hoursLeft = [[UILabel alloc] init];
-    self.minutesLeft = [[UILabel alloc] init];
-}
+// All unnecessary since I already use IBOutlet, and I think @synthesize might be a bit out-dated
+//@synthesize taskLabel = _taskLabel;
+//@synthesize daysLeft = _daysLeft;
+//@synthesize hoursLeft = _hoursLeft;
+//@synthesize minutesLeft = _minutesLeft;
+
+//- (void)awakeFromNib {
+//    // Initialization code
+//    self.taskLabel = [[UILabel alloc] init];
+//    self.daysLeft = [[UILabel alloc] init];
+//    self.hoursLeft = [[UILabel alloc] init];
+//    self.minutesLeft = [[UILabel alloc] init];
+//}
 //
 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 //    [super setSelected:selected animated:animated];

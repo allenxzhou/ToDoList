@@ -74,10 +74,10 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="daysLeft" destination="uJc-Pl-UN0" id="FzY-lq-s3h"/>
-                <outlet property="hoursLeft" destination="fNV-Hl-i3S" id="FSz-Ga-AW1"/>
-                <outlet property="minutesLeft" destination="V3F-62-9ER" id="ttD-Zd-sBs"/>
-                <outlet property="taskLabel" destination="6Nc-dG-YSV" id="xYb-6d-SF4"/>
+                <outlet property="daysLeft" destination="uJc-Pl-UN0" id="8Dv-i9-eCD"/>
+                <outlet property="hoursLeft" destination="fNV-Hl-i3S" id="exb-Dl-gW2"/>
+                <outlet property="minutesLeft" destination="V3F-62-9ER" id="bcX-wd-hez"/>
+                <outlet property="taskLabel" destination="6Nc-dG-YSV" id="9GF-MH-zFB"/>
             </connections>
             <point key="canvasLocation" x="271.5" y="279"/>
         </tableViewCell>

@@ -32,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ToDoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ToDoCell"];
+    // Also unnecessary because I put the actual cell into the storyboard
     //[self.tableView registerClass: [ToDoCell class] forCellReuseIdentifier:@"ToDoCell"];
     self.toDoItems = [[NSMutableArray alloc] init];
     [self loadInitialData];
@@ -74,8 +76,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToDoCell" forIndexPath:indexPath];
-    
+    static NSString *cellIdentifier = @"ToDoCell";
+    ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
+    // Unnnecessary
 //    if (cell == nil) {
 //        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"ToDoCell" owner:self options:nil];
 //        cell = [nibArray objectAtIndex:0];
@@ -83,11 +87,16 @@
     
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     NSString *itemText = [[NSString alloc] initWithString:toDoItem.itemName];
-    //NSString *timeText = [self dateConverter:toDoItem.goal];
+    NSDictionary *timeText = [self dateConverter:toDoItem.goal];
     
     cell.taskLabel.text = itemText;
-    NSLog(@"Fudge Monkeys: %@", cell.taskLabel.text);
-    //cell.detailTextLabel.text = timeText;
+    cell.daysLeft.text = [NSString stringWithFormat:@"%d Days", [[timeText objectForKey: @"Days"] intValue]];
+    cell.hoursLeft.text = [NSString stringWithFormat:@"%d Hours", [[timeText objectForKey: @"Hours"] intValue]];
+    cell.minutesLeft.text = [NSString stringWithFormat:@"%d Minutes", [[timeText objectForKey: @"Minutes"] intValue]];
+    // Alternative: cell.minutesLeft.text = [NSString stringWithFormat:@"%@ Minutes", [timeText objectForKey: @"Minutes"]];
+    
+//    NSLog(@"Fudge Monkeys: %@", cell.taskLabel.text);
+//    cell.detailTextLabel.text = timeText;
     if (toDoItem.completed) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -106,7 +115,7 @@
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (NSString *)dateConverter:(NSDate *)date {
+- (NSDictionary *)dateConverter:(NSDate *)date {
     int seconds = date.timeIntervalSinceNow;
     BOOL wasNegative = false;
     if (seconds < 0) {
@@ -124,7 +133,12 @@
     } else {
         past = @"";
     }
-    return [NSString stringWithFormat:@"%d Days, %d Hours, %d Minutes, %d Seconds%@", days, hours, minutes, seconds, past];
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+                [NSNumber numberWithInt:days], @"Days",
+                [NSNumber numberWithInt:hours], @"Hours",
+                [NSNumber numberWithInt:minutes], @"Minutes",
+                [NSNumber numberWithInt:seconds], @"Seconds", nil];
 }
 
 
